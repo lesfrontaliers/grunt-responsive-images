@@ -110,6 +110,8 @@ module.exports = function(grunt) {
         var srcPath = f.src[0];
         var baseName = path.basename(srcPath, extName); // filename without extension
         var dstPath = path.join(dirName, baseName + sizeOptions.name + extName);
+        var dstDir = path.dirname(dstPath);
+
         var imageOptions = {};
 
         // more than 1 source.
@@ -119,8 +121,8 @@ module.exports = function(grunt) {
         }
 
         // Make directory if it doesn't exist.
-        if (!grunt.file.isDir(dirName)) {
-          grunt.file.mkdir(dirName);
+        if (!grunt.file.isDir(dstDir)) {
+          grunt.file.mkdir(dstDir);
         }
 
         imageOptions = {
